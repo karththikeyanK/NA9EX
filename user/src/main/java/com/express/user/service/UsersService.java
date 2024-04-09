@@ -8,6 +8,7 @@ import com.express.user.exception.DataAccessException;
 import com.express.user.exception.DuplicationException;
 import com.express.user.exception.ValidationException;
 import com.express.user.repo.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,6 +41,7 @@ public class UsersService {
         return user;
     }
 
+    @Transactional
     public UserResponse createUser(UserRequest userRequest) {
         log.info("UsersService::createUser()::Creating user started");
 

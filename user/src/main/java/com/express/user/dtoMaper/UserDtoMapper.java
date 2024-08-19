@@ -2,6 +2,7 @@ package com.express.user.dtoMaper;
 
 import com.express.user.dto.UserRequest;
 import com.express.user.dto.UserResponse;
+import com.express.user.entity.Address;
 import com.express.user.entity.Role;
 import com.express.user.entity.User;
 import lombok.RequiredArgsConstructor;

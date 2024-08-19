@@ -1,11 +1,13 @@
 package com.express.user.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
@@ -13,14 +15,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(
-        name = "admin"
+        name = "customer"
 )
-public class Admin {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "mobile")
+    private String mobile;
 }

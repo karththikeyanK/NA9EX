@@ -1,11 +1,10 @@
-
 spring:
   application:
       name: USER-SERVICE
   datasource:
     url: jdbc:postgresql://localhost:5432/na9user
     username: postgres
-    password: Service@360
+    password: postgres
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -35,3 +34,11 @@ springdoc:
 
 jwt:
   secret: ElX2k8ifx9Vq8L7rGdLLEkLomyV0P1VR
+
+
+AppConstants:
+  Confirmed: CONFIRMED
+  Pending: PENDING
+  Cancelled: CANCELLED
+  Deleted: DELETED
+  Expired: EXPIRED

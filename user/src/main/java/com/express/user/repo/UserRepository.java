@@ -1,5 +1,6 @@
 package com.express.user.repo;
 
+import com.express.user.entity.Role;
 import com.express.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,5 +18,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByContact(String contact);
 
-    Optional<List<User>>  findAllByRole (String role);
+    Optional<List<User>>  findAllByRole (Role role);
 }

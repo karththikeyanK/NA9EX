@@ -32,15 +32,15 @@ public class OpenApiConfig {
         Contact contact = new Contact();
         contact.setEmail("kkarththi15@gmail.com");
         contact.setName("Karththikeyan");
-        contact.setUrl("https://www.eimsky.com");
+        contact.setUrl("https://www.kk.com");
 
         License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
 
         Info info = new Info()
-                .title("Cost Calculator")
+                .title("NA9EXPRESS API")
                 .version("1.0")
                 .contact(contact)
-                .description("This API exposes endpoints to calculate Cost.").termsOfService("https://www.eimsky.com")
+                .description("This API exposes endpoints to calculate Cost.").termsOfService("https://www.kk.com")
                 .license(mitLicense);
 
         return new OpenAPI().info(info).servers(List.of(devServer, prodServer));

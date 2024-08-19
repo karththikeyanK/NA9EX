@@ -1,10 +1,12 @@
 package com.express.user.config;
 
+import com.express.user.exception.JwtAuthenticationExcception;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +20,7 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
   private final JwtService jwtService;
@@ -42,6 +45,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authToken);
+      }else{
+        log.error("JwtAuthenticationFilter::doFilterInternal():: Invalid token");
+        throw new JwtAuthenticationExcception("Invalid token");
       }
     }
     filterChain.doFilter(request, response);

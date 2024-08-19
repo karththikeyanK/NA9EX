@@ -2,6 +2,19 @@
 Vehicle Seat Booking Manager
 
 
+
+// problems
+* in the ticket count we want to only get male and female count and in the server we want to sum
+
+
+
+
+
+
+
+
+
+
 #Admin
 * Before the booking admin want to see the ticket count 
 * Admin can add new vehicle and manage vehicle

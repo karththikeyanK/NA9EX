@@ -3,6 +3,7 @@ package com.express.user.service;
 import com.express.user.dto.UserRequest;
 import com.express.user.dto.UserResponse;
 import com.express.user.dtoMaper.UserDtoMapper;
+import com.express.user.entity.Role;
 import com.express.user.entity.User;
 import com.express.user.exception.DataAccessException;
 import com.express.user.exception.DuplicationException;
@@ -71,6 +72,13 @@ public class UsersService {
         return UserDtoMapper.convertToResponse(user);
     }
 
+    public User getUserEntityById(Long id) {
+        log.info("UsersService::getUserEntityById()::Fetching user by id started");
+        User user = userRepository.findById(id).orElseThrow(() -> new DataAccessException("User not found with id: " + id));
+        log.info("UsersService::getUserEntityById()::Fetching user by id completed");
+        return user;
+    }
+
     public UserResponse getUserByEmail(String email) {
         log.info("UsersService::getUserByEmail()::Fetching user by email started");
         User user = userRepository.findByEmail(email).orElseThrow(() -> new DataAccessException("User not found with email: " + email));
@@ -88,8 +96,16 @@ public class UsersService {
 
     public List<UserResponse> getAllUsers(String category) {
         log.info("UsersService::getAllUsers()::Fetching all users started with category: {} ", category);
-        List<User> users = userRepository.findAllByRole(category).orElseThrow(() -> new DataAccessException("No users found with category: " + category));
+        List<User> users = userRepository.findAllByRole(Role.valueOf(category.toUpperCase())).orElseThrow(() -> new DataAccessException("No users found with category: " + category));
         log.info("UsersService::getAllUsers()::Fetching all users completed with category: {} ", category);
         return users.stream().map(UserDtoMapper::convertToResponse).collect(Collectors.toList());
     }
+
+    public boolean existById(Long id) {
+        log.info("UsersService::existById()::Checking user existence by id started");
+        return userRepository.existsById(id);
+
+    }
+    
+
 }

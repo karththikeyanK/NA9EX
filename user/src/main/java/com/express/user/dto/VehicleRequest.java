@@ -1,16 +1,18 @@
 package com.express.user.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
-  private String token;
-  private String role;
-  private Long id;
+@Data
+@Builder
+public class VehicleRequest {
+    private String vehicleNumber;
+    private String vehicleType;
+    private int vehicleCapacity;
+    private String vehicleStatus;
 }

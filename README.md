@@ -10,11 +10,6 @@ Vehicle Seat Booking Manager
 
 
 
-
-
-
-
-
 #Admin
 * Before the booking admin want to see the ticket count 
 * Admin can add new vehicle and manage vehicle

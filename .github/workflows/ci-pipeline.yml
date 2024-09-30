@@ -39,7 +39,7 @@ jobs:
         cache: maven
 
     - name: Build Docker Image
-      run: docker build -t myapp .
+      run: docker build -t myapp -f user/Dockerfile .
 
     - name: Run Tests
       run: |
